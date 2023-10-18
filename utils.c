@@ -36,7 +36,7 @@ int _is_number(char *str)
 
 	while (str[i])
 	{
-		if (!isdigit(str[i]))
+		if (!isdigit(str[i]) && str[i] != '-')
 			return (0);
 		i++;
 	}
@@ -53,17 +53,6 @@ int _is_number(char *str)
 int get_number(stack_tt *s, char **array, int counter)
 {
 	int i = 1;
-
-/*
-
-	while (array[i])
-	{
-		if (_is_number(array[i]))
-			break;
-			i++;
-	}
-
-*/
 
 	if (!array[i] || !_is_number(array[i]))
 	{
