@@ -1,11 +1,13 @@
 #include "monty.h"
 
+FILE *fd = NULL;
+
 /**
  * preper_inputFile - check access/open the file
  * @argc: number of args
  * @argv: array of args
  * Return: fd to file
-*/
+ */
 FILE *preper_inputFile(int argc, char **argv)
 {
 	char *file;
@@ -31,7 +33,7 @@ FILE *preper_inputFile(int argc, char **argv)
  * fetch_line - get a splited line
  * @s: stack
  * Return: array
-*/
+ */
 char **fetch_line(stack_tt *s)
 {
 	ssize_t len = 0;
@@ -42,7 +44,7 @@ char **fetch_line(stack_tt *s)
 	if (len == -1)
 	{
 		free_dlistint(s);
-		close(fd);
+		fclose(fd);
 		exit(EXIT_SUCCESS);
 	}
 
@@ -54,7 +56,7 @@ char **fetch_line(stack_tt *s)
  * @s: stack
  * @counter: line number
  * Return: nothing
-*/
+ */
 void operations(stack_tt **s, int counter)
 {
 	int number;
@@ -74,7 +76,7 @@ void operations(stack_tt **s, int counter)
 	else if (strcmp(array[0], "pall") == 0)
 		print_stack(*s);
 	else
-		validate_file_instructions(counter, array[0]);
+		validate_file_instructions(*s, counter, array[0]);
 
 	free_array(array);
 }
@@ -84,12 +86,12 @@ void operations(stack_tt **s, int counter)
  * @argc: arg count
  * @argv: array of args
  * Return: int
-*/
+ */
 int main(int argc, char **argv)
 {
 	stack_tt *s;
 	int counter = 0;
-	FILE *fd = preper_inputFile(argc, argv);
+	fd = preper_inputFile(argc, argv);
 
 	while (1)
 	{

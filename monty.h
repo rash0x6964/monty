@@ -9,7 +9,7 @@
 #include <string.h>
 #include <ctype.h>
 
-extern fd;
+extern FILE *fd;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -44,7 +44,7 @@ typedef struct instruction_s
 
 /* utils */
 void _puts_error(char *str);
-void validate_file_instructions(stack_t *s, int lineNb, char *opCode);
+void validate_file_instructions(stack_tt *s, int lineNb, char *opCode);
 int _is_number(char *str);
 int get_number(stack_tt *s, char **array, int counter);
 void free_array(char **array);

@@ -19,12 +19,12 @@ void _puts_error(char *str)
  * @lineNb: line number in file
  * @opCode: invalid instrucion
  * Return: nothing
-*/
-void validate_file_instructions(stack_t *s, int lineNb, char *opCode)
+ */
+void validate_file_instructions(stack_tt *s, int lineNb, char *opCode)
 {
 	_print_fd(2, "L%d: unknown instruction %s\n", lineNb, opCode);
 	free_dlistint(s);
-	close(fd);
+	fclose(fd);
 	exit(EXIT_FAILURE);
 }
 
@@ -32,7 +32,7 @@ void validate_file_instructions(stack_t *s, int lineNb, char *opCode)
  * _is_number - check it's a number
  * @str: string
  * Return: 0 or 1
-*/
+ */
 int _is_number(char *str)
 {
 	int i = 0;
@@ -52,7 +52,7 @@ int _is_number(char *str)
  * @array: array
  * @counter: counter of line
  * Return: int
-*/
+ */
 int get_number(stack_tt *s, char **array, int counter)
 {
 	int i = 1;
@@ -61,7 +61,7 @@ int get_number(stack_tt *s, char **array, int counter)
 	{
 		_print_fd(2, "L%d: usage: push integer\n", counter);
 		free_dlistint(s);
-		close(fd);
+		fclose(fd);
 		exit(EXIT_FAILURE);
 	}
 

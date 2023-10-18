@@ -6,10 +6,10 @@
  * @charsets: string of separators
  * Return: the number of words exist
  */
-int	args_counter(char *str, char *charsets)
+int args_counter(char *str, char *charsets)
 {
-	int	i = 0;
-	int	count = 0;
+	int i = 0;
+	int count = 0;
 
 	while (str[i])
 	{
@@ -45,7 +45,7 @@ char **_split(stack_tt *s, char *str, char *delim)
 	{
 		_print_fd(2, "Error: malloc failed\n");
 		free_dlistint(s);
-		close(fd);
+		fclose(fd);
 		exit(EXIT_FAILURE);
 	}
 
@@ -56,7 +56,7 @@ char **_split(stack_tt *s, char *str, char *delim)
 		{
 			_print_fd(2, "Error: malloc failed\n");
 			free_dlistint(s);
-			close(fd);
+			fclose(fd);
 			exit(EXIT_FAILURE);
 		}
 		res = strtok(NULL, delim);
