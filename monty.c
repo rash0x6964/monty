@@ -47,7 +47,7 @@ char **fetch_line(FILE *file_fd, stack_tt *s)
 		exit(EXIT_SUCCESS);
 	}
 
-	return (_split(s, buffer, " \n"));
+	return (_split(s, buffer, " \t\n"));
 }
 
 /**
