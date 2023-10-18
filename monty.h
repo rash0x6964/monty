@@ -48,7 +48,7 @@ int get_number(stack_tt *s, char **array, int counter);
 void free_array(char **array);
 
 /* tokenizer */
-char **_split(char *str, char *delim);
+char **_split(stack_tt *s, char *str, char *delim);
 
 /* lists */
 stack_tt *add_dnodeint(stack_tt **head, const int n);

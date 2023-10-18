@@ -47,7 +47,7 @@ char **fetch_line(FILE *file_fd, stack_tt *s)
 		exit(EXIT_SUCCESS);
 	}
 
-	return (_split(buffer, " \n"));
+	return (_split(s, buffer, " \n"));
 }
 
 /**
@@ -75,6 +75,8 @@ void operations(FILE *file_fd, stack_tt **s, int counter)
 	}
 	else if (strcmp(array[0], "pall") == 0)
 		print_stack(*s);
+	else
+		validate_file_instructions(counter, array[0]);
 
 	free_array(array);
 }

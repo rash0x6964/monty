@@ -28,11 +28,12 @@ int	args_counter(char *str, char *charsets)
 
 /**
  * _split - split the string to seperates word
+ * @s: stack
  * @str: the given string
  * @delim: seperators
  * Return: array of strings
  */
-char **_split(char *str, char *delim)
+char **_split(stack_tt *s, char *str, char *delim)
 {
 	char **args;
 	size_t i = 0;
@@ -43,6 +44,7 @@ char **_split(char *str, char *delim)
 	if (!args)
 	{
 		_print_fd(2, "Error: malloc failed\n");
+		free_dlistint(s);
 		exit(EXIT_FAILURE);
 	}
 
@@ -52,6 +54,7 @@ char **_split(char *str, char *delim)
 		if (!args[i++])
 		{
 			_print_fd(2, "Error: malloc failed\n");
+			free_dlistint(s);
 			exit(EXIT_FAILURE);
 		}
 		res = strtok(NULL, delim);
