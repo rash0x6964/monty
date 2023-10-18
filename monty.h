@@ -60,6 +60,7 @@ void free_dlistint(stack_tt *head);
 /* stack */
 void puch_to_stack(stack_tt **s, int number);
 void print_stack(stack_tt *s);
+void sub(stack_t **head, unsigned int line);
 
 /*++++++++++++++++++++++++++ PRINT FD ++++++++++++++++++++++++++++++++++*/
 
