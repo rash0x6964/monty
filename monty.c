@@ -65,7 +65,7 @@ void operations(FILE *file_fd, stack_tt **s, int counter)
 	if (!array[0])
 	{
 		free_array(array);
-		return ;
+		return;
 	}
 
 	if (strcmp(array[0], "push") == 0)
