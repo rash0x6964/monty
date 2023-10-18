@@ -90,7 +90,7 @@ static int	checks(int fd, va_list	argp, const char *str, t_locals *loc)
 }
 
 /**
- * _printf - produces out_put according to a format.
+ * _print_fd - produces out_put according to a format.
  * @fd: file discriptor
  * @format: character string
  * Return: length of the out_put

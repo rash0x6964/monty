@@ -59,11 +59,18 @@ char **fetch_line(FILE *file_fd, stack_tt *s)
 */
 void operations(FILE *file_fd, stack_tt **s, int counter)
 {
+	int number;
 	char **array = fetch_line(file_fd, *s);
+
+	if (!array[0])
+	{
+		free_array(array);
+		return ;
+	}
 
 	if (strcmp(array[0], "push") == 0)
 	{
-		int number = get_number(*s, array, counter);
+		number = get_number(*s, array, counter);
 		puch_to_stack(s, number);
 	}
 	else if (strcmp(array[0], "pall") == 0)

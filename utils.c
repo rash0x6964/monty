@@ -45,6 +45,7 @@ int _is_number(char *str)
 
 /**
  * get_number - get a number form array
+ * @s: stack
  * @array: array
  * @counter: counter of line
  * Return: int
