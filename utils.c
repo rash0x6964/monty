@@ -54,14 +54,18 @@ int get_number(stack_tt *s, char **array, int counter)
 {
 	int i = 1;
 
+/*
+
 	while (array[i])
 	{
 		if (_is_number(array[i]))
 			break;
-		i++;
+			i++;
 	}
 
-	if (!array[i])
+*/
+
+	if (!array[i] || !_is_number(array[i]))
 	{
 		_print_fd(2, "L%d: usage: push integer\n", counter);
 		free_dlistint(s);
