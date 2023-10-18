@@ -45,6 +45,7 @@ char **_split(stack_tt *s, char *str, char *delim)
 	{
 		_print_fd(2, "Error: malloc failed\n");
 		free_dlistint(s);
+		close(fd);
 		exit(EXIT_FAILURE);
 	}
 
@@ -55,6 +56,7 @@ char **_split(stack_tt *s, char *str, char *delim)
 		{
 			_print_fd(2, "Error: malloc failed\n");
 			free_dlistint(s);
+			close(fd);
 			exit(EXIT_FAILURE);
 		}
 		res = strtok(NULL, delim);

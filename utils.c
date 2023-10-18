@@ -15,13 +15,16 @@ void _puts_error(char *str)
 
 /**
  * validate_file_instructions - print an error
+ * @s: stack
  * @lineNb: line number in file
  * @opCode: invalid instrucion
  * Return: nothing
 */
-void validate_file_instructions(int lineNb, char *opCode)
+void validate_file_instructions(stack_t *s, int lineNb, char *opCode)
 {
 	_print_fd(2, "L%d: unknown instruction %s\n", lineNb, opCode);
+	free_dlistint(s);
+	close(fd);
 	exit(EXIT_FAILURE);
 }
 
@@ -58,6 +61,7 @@ int get_number(stack_tt *s, char **array, int counter)
 	{
 		_print_fd(2, "L%d: usage: push integer\n", counter);
 		free_dlistint(s);
+		close(fd);
 		exit(EXIT_FAILURE);
 	}
 

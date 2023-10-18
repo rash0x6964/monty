@@ -9,7 +9,6 @@
 FILE *preper_inputFile(int argc, char **argv)
 {
 	char *file;
-	FILE *file_fd;
 
 	if (argc != 2)
 	{
@@ -24,26 +23,26 @@ FILE *preper_inputFile(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	file_fd = fopen(file, "r");
-	return (file_fd);
+	fd = fopen(file, "r");
+	return (fd);
 }
 
 /**
  * fetch_line - get a splited line
- * @file_fd: fd of file
  * @s: stack
  * Return: array
 */
-char **fetch_line(FILE *file_fd, stack_tt *s)
+char **fetch_line(stack_tt *s)
 {
 	ssize_t len = 0;
 	size_t bufsize = 0;
 	char *buffer = NULL;
 
-	len = getline(&buffer, &bufsize, file_fd);
+	len = getline(&buffer, &bufsize, fd);
 	if (len == -1)
 	{
 		free_dlistint(s);
+		close(fd);
 		exit(EXIT_SUCCESS);
 	}
 
@@ -52,15 +51,14 @@ char **fetch_line(FILE *file_fd, stack_tt *s)
 
 /**
  * operations - implement the op at the stack
- * @file_fd: file fd
  * @s: stack
  * @counter: line number
  * Return: nothing
 */
-void operations(FILE *file_fd, stack_tt **s, int counter)
+void operations(stack_tt **s, int counter)
 {
 	int number;
-	char **array = fetch_line(file_fd, *s);
+	char **array = fetch_line(*s);
 
 	if (!array[0])
 	{
@@ -91,11 +89,11 @@ int main(int argc, char **argv)
 {
 	stack_tt *s;
 	int counter = 0;
-	FILE *file_fd = preper_inputFile(argc, argv);
+	FILE *fd = preper_inputFile(argc, argv);
 
 	while (1)
 	{
 		counter++;
-		operations(file_fd, &s, counter);
+		operations(&s, counter);
 	}
 }
