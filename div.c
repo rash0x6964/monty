@@ -2,7 +2,7 @@
 
 /**
  * _div  - Divide the second top element of the stack by the top element
- * @stack: Double pointer to the stack.
+ * @s: Double pointer to the stack.
  * @array: splited line
  * Return: nothing
  */

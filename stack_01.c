@@ -38,7 +38,7 @@ void swap(stack_tt **s, char **array)
 
 /**
  * sub - Subtract the top element of the stack from the second top element
- * @head: Double pointer to the stack
+ * @s: Double pointer to the stack
  * @array: splited line
  * Return: nothing
  */
