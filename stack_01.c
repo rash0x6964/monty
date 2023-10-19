@@ -24,7 +24,7 @@ void swap(stack_tt **s, char **array)
 
 	if (current == NULL || current->next == NULL)
 	{
-		fprintf(stderr, "L%lu: can't swap\n", counter);
+		fprintf(stderr, "L%lu: can't swap, stack too short\n", counter);
 		fclose(fd);
 		free_array(array);
 		free_dlistint(*s);
