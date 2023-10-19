@@ -1,24 +1,27 @@
 #include "monty.h"
 
 /**
- * div  - Divide the second top element of the stack by the top element
+ * _div  - Divide the second top element of the stack by the top element
  * @stack: Double pointer to the stack.
- * @line_number: Unused argument.
+ * @array: splited line
+ * Return: nothing
  */
-void div(stack_t **stack, unsigned int line_number)
+void _div(stack_tt **s, char **array)
 {
-	stack_t *temp;
-	(void)line_number;
+	stack_tt *temp;
 
-	if ((*stack)->n == 0)
+	if ((*s)->n == 0)
 	{
-		fprintf(stderr, "L%d: division by 0\n", line_number);
+		fprintf(stderr, "L%d: division by zero\n", g.counter);
+		fclose(g.fd);
+		free_array(array);
+		free_dlistint(*s);
 		exit(EXIT_FAILURE);
 	}
 
-	(*stack)->next->n /= (*stack)->n;
-	temp = *stack;
-	*stack = (*stack)->next;
+	(*s)->next->n /= (*s)->n;
+	temp = *s;
+	*s = (*s)->next;
 	free(temp);
 }
 

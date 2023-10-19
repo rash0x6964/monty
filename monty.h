@@ -72,5 +72,6 @@ void pop(stack_tt **s, char **array);
 void swap(stack_tt **s, char **array);
 void add(stack_tt **s, char **array);
 void nop(stack_tt **s, char **array);
+void sub(stack_tt **s, char **array);
 
 #endif

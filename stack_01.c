@@ -35,3 +35,32 @@ void swap(stack_tt **s, char **array)
 	current->next->n = current->n;
 	current->n = holder;
 }
+
+/**
+ * sub - Subtract the top element of the stack from the second top element
+ * @head: Double pointer to the stack
+ * @array: splited line
+ * Return: nothing
+ */
+void sub(stack_tt **s, char **array)
+{
+	stack_tt *temp;
+	int result;
+
+	if (s == NULL || *s == NULL || (*s)->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't sub, stack too short\n", g.counter);
+		fclose(g.fd);
+		free_array(array);
+		free_dlistint(*s);
+		exit(EXIT_FAILURE);
+	}
+
+	result = (*s)->next->n - (*s)->n;
+	temp = *s;
+	*s = (*s)->next;
+	(*s)->prev = NULL;
+	free(temp);
+
+	(*s)->n = result;
+}
