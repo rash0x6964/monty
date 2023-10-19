@@ -1,13 +1,17 @@
 #ifndef MONTY_H
 # define MONTY_H
 
+# define  _GNU_SOURCE
+
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
 
-#include <string.h>
-#include <ctype.h>
+# include <string.h>
+# include <ctype.h>
+
+
 
 extern FILE *fd;
 extern int counter;
