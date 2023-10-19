@@ -39,3 +39,26 @@ void pint(stack_tt **s, char **array)
 	}
 	printf("%d\n", (*s)->n);
 }
+
+/**
+ * pop - prints the top and remove it
+ * @s: stack s
+ * @array: splited line
+ * Return: no return
+*/
+void pop(stack_tt **s, char **array)
+{
+	stack_tt *tmp;
+
+	if (*s == NULL)
+	{
+		fprintf(stderr, "L%lu: can't pop an empty stack\n", counter);
+		fclose(fd);
+		free_array(array);
+		free_dlistint(*s);
+		exit(EXIT_FAILURE);
+	}
+	tmp = *s;
+	*s = tmp->next;
+	free(tmp);
+}

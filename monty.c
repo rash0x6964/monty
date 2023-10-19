@@ -78,6 +78,8 @@ void operations(stack_tt **s)
 		print_stack(*s);
 	else if (strcmp(array[0], "pint") == 0)
 		pint(s, array);
+	else if (strcmp(array[0], "pop") == 0)
+		pop(s, array);
 	else
 		validate_file_instructions(*s, array);
 
