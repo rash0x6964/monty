@@ -42,6 +42,7 @@ size_t print_dlistint(const stack_tt *h)
 	while (h)
 	{
 		printf("%d\n", h->n);
+		fflush(stdout);
 		index++;
 		h = h->next;
 	}

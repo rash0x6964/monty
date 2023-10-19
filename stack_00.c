@@ -42,6 +42,7 @@ void pint(stack_tt **s, char **array)
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*s)->n);
+	fflush(stdout);
 }
 
 /**
