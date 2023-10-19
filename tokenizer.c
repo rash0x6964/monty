@@ -43,9 +43,10 @@ char **_split(stack_tt *s, char *str, char *delim)
 	args = malloc(sizeof(char *) * (len + 1));
 	if (!args)
 	{
-		_print_fd(2, "Error: malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		free_dlistint(s);
 		fclose(fd);
+		free(str);
 		exit(EXIT_FAILURE);
 	}
 
@@ -54,14 +55,17 @@ char **_split(stack_tt *s, char *str, char *delim)
 		args[i] = strdup(res);
 		if (!args[i++])
 		{
-			_print_fd(2, "Error: malloc failed\n");
+			fprintf(stderr, "Error: malloc failed\n");
 			free_dlistint(s);
 			fclose(fd);
+			free_array(args);
+			free(str);
 			exit(EXIT_FAILURE);
 		}
 		res = strtok(NULL, delim);
 	}
 	args[i] = NULL;
+	free(str);
 
 	return (args);
 }

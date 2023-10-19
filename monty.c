@@ -1,6 +1,7 @@
 #include "monty.h"
 
 FILE *fd = NULL;
+int counter = 0;
 
 /**
  * preper_inputFile - check access/open the file
@@ -14,14 +15,14 @@ FILE *preper_inputFile(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		_print_fd(2, "USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
 	file = argv[1];
 	if (access(file, F_OK | R_OK) != 0)
 	{
-		_print_fd(2, "Error: Can't open file %s\n", file);
+		fprintf(stderr, "Error: Can't open file %s\n", file);
 		exit(EXIT_FAILURE);
 	}
 
@@ -43,6 +44,7 @@ char **fetch_line(stack_tt *s)
 	len = getline(&buffer, &bufsize, fd);
 	if (len == -1)
 	{
+		free(buffer);
 		free_dlistint(s);
 		fclose(fd);
 		exit(EXIT_SUCCESS);
@@ -54,10 +56,9 @@ char **fetch_line(stack_tt *s)
 /**
  * operations - implement the op at the stack
  * @s: stack
- * @counter: line number
  * Return: nothing
  */
-void operations(stack_tt **s, int counter)
+void operations(stack_tt **s)
 {
 	int number;
 	char **array = fetch_line(*s);
@@ -70,16 +71,22 @@ void operations(stack_tt **s, int counter)
 
 	if (strcmp(array[0], "push") == 0)
 	{
-		number = get_number(*s, array, counter);
-		puch_to_stack(s, number);
+		number = get_number(*s, array);
+		add_dnodeint(s, number);
 	}
 	else if (strcmp(array[0], "pall") == 0)
 		print_stack(*s);
 	else
-		validate_file_instructions(*s, counter, array[0]);
+		validate_file_instructions(*s, array);
 
 	free_array(array);
 }
+
+/**
+ * f - detect leaks
+ * Return: nothing
+*/
+void f(void) { system("leaks monty"); }
 
 /**
  * main - entery point
@@ -89,13 +96,14 @@ void operations(stack_tt **s, int counter)
  */
 int main(int argc, char **argv)
 {
-	stack_tt *s;
-	int counter = 0;
+	stack_tt *s = NULL;
+
+	atexit(f);
 	fd = preper_inputFile(argc, argv);
 
 	while (1)
 	{
 		counter++;
-		operations(&s, counter);
+		operations(&s);
 	}
 }

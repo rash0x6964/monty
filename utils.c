@@ -16,15 +16,15 @@ void _puts_error(char *str)
 /**
  * validate_file_instructions - print an error
  * @s: stack
- * @lineNb: line number in file
- * @opCode: invalid instrucion
+ * @array: splited line
  * Return: nothing
  */
-void validate_file_instructions(stack_tt *s, int lineNb, char *opCode)
+void validate_file_instructions(stack_tt *s, char **array)
 {
-	_print_fd(2, "L%d: unknown instruction %s\n", lineNb, opCode);
+	fprintf(stderr, "L%d: unknown instruction %s\n", counter, array[0]);
 	free_dlistint(s);
 	fclose(fd);
+	free_array(array);
 	exit(EXIT_FAILURE);
 }
 
@@ -50,18 +50,18 @@ int _is_number(char *str)
  * get_number - get a number form array
  * @s: stack
  * @array: array
- * @counter: counter of line
  * Return: int
  */
-int get_number(stack_tt *s, char **array, int counter)
+int get_number(stack_tt *s, char **array)
 {
 	int i = 1;
 
 	if (!array[i] || !_is_number(array[i]))
 	{
-		_print_fd(2, "L%d: usage: push integer\n", counter);
+		fprintf(stderr, "L%d: usage: push integer\n", counter);
 		free_dlistint(s);
 		fclose(fd);
+		free_array(array);
 		exit(EXIT_FAILURE);
 	}
 
