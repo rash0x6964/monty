@@ -37,10 +37,12 @@ int _is_number(char *str)
 {
 	int i = 0;
 
+	if (str[i] == '-')
+		i++;
+
 	while (str[i])
 	{
-		if ((!isdigit(str[i]) && (str[i] == '-' && i != 0))
-			|| (!isdigit(str[i]) && str[i] != '-'))
+		if (!isdigit(str[i]))
 			return (0);
 		i++;
 	}

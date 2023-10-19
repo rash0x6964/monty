@@ -41,7 +41,7 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_tt **stack, unsigned int line_number);
+	void (*f)(stack_tt **s, char **array);
 } instruction_t;
 
 /* utils */
@@ -60,10 +60,12 @@ size_t print_dlistint(const stack_tt *h);
 void free_dlistint(stack_tt *head);
 
 /* stack */
-void puch_to_stack(stack_tt **s, int number);
-void print_stack(stack_tt *s);
-void sub(stack_tt **head);
+void push(stack_tt **s, char **array);
+void pall(stack_tt **s, char **array);
 void pint(stack_tt **s, char **array);
 void pop(stack_tt **s, char **array);
+void swap(stack_tt **s, char **array);
+void add(stack_tt **s, char **array);
+void nop(stack_tt **s, char **array);
 
 #endif
