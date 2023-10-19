@@ -1,15 +1,20 @@
 #ifndef MONTY_H
 # define MONTY_H
 
+# define  _GNU_SOURCE
+
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
 
-#include <string.h>
-#include <ctype.h>
+# include <string.h>
+# include <ctype.h>
+
+
 
 extern FILE *fd;
+extern int counter;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -44,9 +49,9 @@ typedef struct instruction_s
 
 /* utils */
 void _puts_error(char *str);
-void validate_file_instructions(stack_tt *s, int lineNb, char *opCode);
+void validate_file_instructions(stack_tt *s, char **array);
 int _is_number(char *str);
-int get_number(stack_tt *s, char **array, int counter);
+int get_number(stack_tt *s, char **array);
 void free_array(char **array);
 
 /* tokenizer */
@@ -60,25 +65,6 @@ void free_dlistint(stack_tt *head);
 /* stack */
 void puch_to_stack(stack_tt **s, int number);
 void print_stack(stack_tt *s);
-void sub(stack_t **head, unsigned int line);
-
-/*++++++++++++++++++++++++++ PRINT FD ++++++++++++++++++++++++++++++++++*/
-
-# include<stdarg.h>
-
-/**
- *struct s_locals - New data type as t_locals
- *@i: index of while
- *@glen: length of string i printed
- */
-typedef struct s_locals
-{
-	int i;
-	int glen;
-} t_locals;
-
-int _print_fd(int fd, const char *format, ...);
-
-/*+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+void sub(stack_tt **head, unsigned int line);
 
 #endif

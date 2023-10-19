@@ -5,9 +5,9 @@
  * @head: Double pointer to the stack
  * @line: Line number of the instruction
  */
-void sub(stack_t **head, unsigned int line)
+void sub(stack_tt **head, unsigned int line)
 {
-	stack_t *temp;
+	stack_tt *temp;
 	int result;
 
 	if (head == NULL || *head == NULL || (*head)->next == NULL)
