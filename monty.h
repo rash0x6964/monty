@@ -1,20 +1,18 @@
 #ifndef MONTY_H
-# define MONTY_H
+#define MONTY_H
 
-# define  _GNU_SOURCE
+#define _GNU_SOURCE
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdio.h>
 
-# include <string.h>
-# include <ctype.h>
-
-
+#include <string.h>
+#include <ctype.h>
 
 extern FILE *fd;
-extern int counter;
+extern size_t counter;
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -46,7 +44,6 @@ typedef struct instruction_s
 	void (*f)(stack_tt **stack, unsigned int line_number);
 } instruction_t;
 
-
 /* utils */
 void _puts_error(char *str);
 void validate_file_instructions(stack_tt *s, char **array);
@@ -65,6 +62,7 @@ void free_dlistint(stack_tt *head);
 /* stack */
 void puch_to_stack(stack_tt **s, int number);
 void print_stack(stack_tt *s);
-void sub(stack_tt **head, unsigned int line);
+void sub(stack_tt **head);
+void pint(stack_tt **s, char **array);
 
 #endif

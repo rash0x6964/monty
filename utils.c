@@ -21,7 +21,7 @@ void _puts_error(char *str)
  */
 void validate_file_instructions(stack_tt *s, char **array)
 {
-	fprintf(stderr, "L%d: unknown instruction %s\n", counter, array[0]);
+	fprintf(stderr, "L%lu: unknown instruction %s\n", counter, array[0]);
 	free_dlistint(s);
 	fclose(fd);
 	free_array(array);
@@ -39,7 +39,7 @@ int _is_number(char *str)
 
 	while (str[i])
 	{
-		if (!isdigit(str[i]) && str[i] != '-')
+		if (!isdigit(str[i]) && (str[i] == '-' && i != 0))
 			return (0);
 		i++;
 	}
@@ -58,7 +58,7 @@ int get_number(stack_tt *s, char **array)
 
 	if (!array[i] || !_is_number(array[i]))
 	{
-		fprintf(stderr, "L%d: usage: push integer\n", counter);
+		fprintf(stderr, "L%lu: usage: push integer\n", counter);
 		free_dlistint(s);
 		fclose(fd);
 		free_array(array);

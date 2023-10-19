@@ -1,7 +1,7 @@
 #include "monty.h"
 
 FILE *fd = NULL;
-int counter = 0;
+size_t counter = 0;
 
 /**
  * preper_inputFile - check access/open the file
@@ -76,6 +76,8 @@ void operations(stack_tt **s)
 	}
 	else if (strcmp(array[0], "pall") == 0)
 		print_stack(*s);
+	else if (strcmp(array[0], "pint") == 0)
+		pint(s, array);
 	else
 		validate_file_instructions(*s, array);
 
@@ -85,7 +87,7 @@ void operations(stack_tt **s)
 /**
  * f - detect leaks
  * Return: nothing
-*/
+ */
 void f(void) { system("leaks monty"); }
 
 /**

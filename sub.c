@@ -3,16 +3,15 @@
 /**
  * sub - Subtract the top element of the stack from the second top element
  * @head: Double pointer to the stack
- * @line: Line number of the instruction
  */
-void sub(stack_tt **head, unsigned int line)
+void sub(stack_tt **head)
 {
 	stack_tt *temp;
 	int result;
 
 	if (head == NULL || *head == NULL || (*head)->next == NULL)
 	{
-		fprintf(stderr, "L%d: can't sub, stack too short\n", line);
+		fprintf(stderr, "L%lu: can't sub, stack too short\n", counter);
 		exit(EXIT_FAILURE);
 	}
 
