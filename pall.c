@@ -7,9 +7,9 @@
  *
  * Return: void
  */
-void pall(stack_t **stack, unsigned int line_number)
+void pall(stack_tt **stack, unsigned int line_number)
 {
-	stack_t *current_node = *stack;
+	stack_tt *current_node = *stack;
 
 	(void)line_number;
 
