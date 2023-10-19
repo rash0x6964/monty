@@ -1,7 +1,6 @@
 #include "monty.h"
 
-FILE *fd = NULL;
-size_t counter = 0;
+t_global_var g = {NULL, 0};
 
 /**
  * preper_inputFile - check access/open the file
@@ -26,8 +25,8 @@ FILE *preper_inputFile(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	fd = fopen(file, "r");
-	return (fd);
+	g.fd = fopen(file, "r");
+	return (g.fd);
 }
 
 /**
@@ -41,12 +40,12 @@ char **fetch_line(stack_tt *s)
 	size_t bufsize = 0;
 	char *buffer = NULL;
 
-	len = getline(&buffer, &bufsize, fd);
+	len = getline(&buffer, &bufsize, g.fd);
 	if (len == -1)
 	{
 		free(buffer);
 		free_dlistint(s);
-		fclose(fd);
+		fclose(g.fd);
 		exit(EXIT_SUCCESS);
 	}
 
@@ -107,11 +106,11 @@ int main(int argc, char **argv)
 {
 	stack_tt *s = NULL;
 
-	fd = preper_inputFile(argc, argv);
+	g.fd = preper_inputFile(argc, argv);
 
 	while (1)
 	{
-		counter++;
+		(g.counter)++;
 		operations(&s);
 	}
 }

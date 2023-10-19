@@ -21,9 +21,9 @@ void _puts_error(char *str)
  */
 void validate_file_instructions(stack_tt *s, char **array)
 {
-	fprintf(stderr, "L%lu: unknown instruction %s\n", counter, array[0]);
+	fprintf(stderr, "L%d: unknown instruction %s\n", g.counter, array[0]);
 	free_dlistint(s);
-	fclose(fd);
+	fclose(g.fd);
 	free_array(array);
 	exit(EXIT_FAILURE);
 }
@@ -61,9 +61,9 @@ int get_number(stack_tt *s, char **array)
 
 	if (!array[i] || !_is_number(array[i]))
 	{
-		fprintf(stderr, "L%lu: usage: push integer\n", counter);
+		fprintf(stderr, "L%d: usage: push integer\n", g.counter);
 		free_dlistint(s);
-		fclose(fd);
+		fclose(g.fd);
 		free_array(array);
 		exit(EXIT_FAILURE);
 	}

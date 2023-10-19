@@ -35,8 +35,8 @@ void pint(stack_tt **s, char **array)
 {
 	if (!*s)
 	{
-		fprintf(stderr, "L%lu: can't pint, stack empty\n", counter);
-		fclose(fd);
+		fprintf(stderr, "L%d: can't pint, stack empty\n", g.counter);
+		fclose(g.fd);
 		free_array(array);
 		free_dlistint(*s);
 		exit(EXIT_FAILURE);
@@ -57,8 +57,8 @@ void pop(stack_tt **s, char **array)
 
 	if (*s == NULL)
 	{
-		fprintf(stderr, "L%lu: can't pop an empty stack\n", counter);
-		fclose(fd);
+		fprintf(stderr, "L%d: can't pop an empty stack\n", g.counter);
+		fclose(g.fd);
 		free_array(array);
 		free_dlistint(*s);
 		exit(EXIT_FAILURE);
@@ -80,8 +80,8 @@ void add(stack_tt **s, char **array)
 
 	if (*s == NULL || (*s)->next == NULL)
 	{
-		fprintf(stderr, "L%lu: can't add, stack too short\n", counter);
-		fclose(fd);
+		fprintf(stderr, "L%d: can't add, stack too short\n", g.counter);
+		fclose(g.fd);
 		free_array(array);
 		free_dlistint(*s);
 		exit(EXIT_FAILURE);

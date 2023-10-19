@@ -45,7 +45,7 @@ char **_split(stack_tt *s, char *str, char *delim)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free_dlistint(s);
-		fclose(fd);
+		fclose(g.fd);
 		free(str);
 		exit(EXIT_FAILURE);
 	}
@@ -57,7 +57,7 @@ char **_split(stack_tt *s, char *str, char *delim)
 		{
 			fprintf(stderr, "Error: malloc failed\n");
 			free_dlistint(s);
-			fclose(fd);
+			fclose(g.fd);
 			free_array(args);
 			free(str);
 			exit(EXIT_FAILURE);

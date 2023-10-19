@@ -11,8 +11,13 @@
 #include <string.h>
 #include <ctype.h>
 
-extern FILE *fd;
-extern size_t counter;
+typedef struct s_global_var
+{
+	FILE *fd;
+	int counter;
+} t_global_var;
+extern t_global_var g;
+
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
