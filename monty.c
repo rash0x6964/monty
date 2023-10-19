@@ -60,8 +60,14 @@ char **fetch_line(stack_tt *s)
  */
 void operations(stack_tt **s)
 {
-	int number;
+	int i = 0;
 	char **array = fetch_line(*s);
+
+	instruction_t opst[] = {
+			{"push", push}, {"pall", pall}, {"pint", pint},
+			{"pop", pop}, {"swap", swap}, {"add", add},
+			{"nop", nop}, {NULL, NULL}
+	};
 
 	if (!array[0])
 	{
@@ -69,18 +75,17 @@ void operations(stack_tt **s)
 		return;
 	}
 
-	if (strcmp(array[0], "push") == 0)
+	while (opst[i].opcode)
 	{
-		number = get_number(*s, array);
-		add_dnodeint(s, number, array);
+		if (strcmp(array[0], opst[i].opcode) == 0)
+		{
+			opst[i].f(s, array);
+			break;
+		}
+		i++;
 	}
-	else if (strcmp(array[0], "pall") == 0)
-		print_stack(*s);
-	else if (strcmp(array[0], "pint") == 0)
-		pint(s, array);
-	else if (strcmp(array[0], "pop") == 0)
-		pop(s, array);
-	else
+
+	if (opst[i].opcode == NULL)
 		validate_file_instructions(*s, array);
 
 	free_array(array);

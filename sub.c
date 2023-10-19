@@ -23,4 +23,3 @@ void sub(stack_tt **head)
 
 	(*head)->n = result;
 }
-

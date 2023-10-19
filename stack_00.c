@@ -1,25 +1,28 @@
 #include "monty.h"
 
 /**
- * puch_to_stack - puch to stack
+ * push - push to stack
  * @s: stack
- * @number: value of new node
+ * @array: splited line
  * Return: nothing
  */
-void puch_to_stack(stack_tt **s, int number)
+void push(stack_tt **s, char **array)
 {
-	(void) s;
-	(void) number;
+	int number = get_number(*s, array);
+
+	add_dnodeint(s, number, array);
 }
 
 /**
- * print_stack - print the stack
+ * pall - print the stack
  * @s: stack
+ * @array: unused param
  * Return: nothing
  */
-void print_stack(stack_tt *s)
+void pall(stack_tt **s, char **array)
 {
-	print_dlistint(s);
+	(void)array;
+	print_dlistint(*s);
 }
 
 /**
@@ -46,7 +49,7 @@ void pint(stack_tt **s, char **array)
  * @s: stack s
  * @array: splited line
  * Return: no return
-*/
+ */
 void pop(stack_tt **s, char **array)
 {
 	stack_tt *tmp;
@@ -62,4 +65,30 @@ void pop(stack_tt **s, char **array)
 	tmp = *s;
 	*s = tmp->next;
 	free(tmp);
+}
+
+/**
+ * add - add the top two elements of the stack
+ * @s: Double pointer to the stack
+ * @array: splited line
+ * Return: void
+ */
+void add(stack_tt **s, char **array)
+{
+	stack_tt *temp = *s;
+
+	if (*s == NULL || (*s)->next == NULL)
+	{
+		fprintf(stderr, "L%lu: can't add, stack too short\n", counter);
+		fclose(fd);
+		free_array(array);
+		free_dlistint(*s);
+		exit(EXIT_FAILURE);
+	}
+
+	(*s)->next->n += (*s)->n;
+	*s = (*s)->next;
+	(*s)->prev = NULL;
+
+	free(temp);
 }
