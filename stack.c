@@ -24,6 +24,7 @@ void print_stack(stack_tt *s)
 /**
  * pint - prints the top
  * @s: stack head
+ * @array: splited line
  * Return: nothing
  */
 void pint(stack_tt **s, char **array)
@@ -32,7 +33,7 @@ void pint(stack_tt **s, char **array)
 	{
 		fprintf(stderr, "L%lu: can't pint, stack empty\n", counter);
 		fclose(fd);
-		free(array);
+		free_array(array);
 		free_dlistint(*s);
 		exit(EXIT_FAILURE);
 	}

@@ -39,7 +39,8 @@ int _is_number(char *str)
 
 	while (str[i])
 	{
-		if (!isdigit(str[i]) && (str[i] == '-' && i != 0))
+		if ((!isdigit(str[i]) && (str[i] == '-' && i != 0))
+			|| (!isdigit(str[i]) && str[i] != '-'))
 			return (0);
 		i++;
 	}
