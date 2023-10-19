@@ -1,8 +1,8 @@
 push 0 Push 0 onto the stack
 push 1 Push 1 onto the stack
 
-  push +34
- 	push	3
+				push 45676978967567563434434347568678678734 sdggg
+ 	dsf			3
                    pall
 
 

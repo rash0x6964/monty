@@ -55,7 +55,7 @@ void free_array(char **array);
 char **_split(stack_tt *s, char *str, char *delim);
 
 /* lists */
-stack_tt *add_dnodeint(stack_tt **head, const int n);
+stack_tt *add_dnodeint(stack_tt **head, const int n, char **array);
 size_t print_dlistint(const stack_tt *h);
 void free_dlistint(stack_tt *head);
 

@@ -7,7 +7,7 @@
  * Return: address of the new element or NULL
  */
 
-stack_tt *add_dnodeint(stack_tt **head, const int n)
+stack_tt *add_dnodeint(stack_tt **head, const int n, char **array)
 {
 	stack_tt *new_node;
 
@@ -15,7 +15,9 @@ stack_tt *add_dnodeint(stack_tt **head, const int n)
 	if (!new_node)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		fclose(fd);
 		free_dlistint(*head);
+		free_array(array);
 		exit(EXIT_FAILURE);
 	}
 	new_node->n = n;

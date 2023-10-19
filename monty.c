@@ -72,7 +72,7 @@ void operations(stack_tt **s)
 	if (strcmp(array[0], "push") == 0)
 	{
 		number = get_number(*s, array);
-		add_dnodeint(s, number);
+		add_dnodeint(s, number, array);
 	}
 	else if (strcmp(array[0], "pall") == 0)
 		print_stack(*s);
