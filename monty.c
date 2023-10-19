@@ -98,7 +98,6 @@ int main(int argc, char **argv)
 {
 	stack_tt *s = NULL;
 
-	atexit(f);
 	fd = preper_inputFile(argc, argv);
 
 	while (1)
