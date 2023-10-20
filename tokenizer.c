@@ -50,7 +50,7 @@ char **_split(stack_tt *s, char *str, char *delim)
 		exit(EXIT_FAILURE);
 	}
 
-	while (i < len)
+	while (i < len && res)
 	{
 		args[i] = strdup(res);
 		if (!args[i++])
